@@ -2,8 +2,12 @@ package com.peterzuo;
 
 import com.peterzuo.fundamentals.MaxHeap;
 
-public class Main {
-
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
     public static void main(String[] args) {
 	    // write your code here
         testMaxHeap();

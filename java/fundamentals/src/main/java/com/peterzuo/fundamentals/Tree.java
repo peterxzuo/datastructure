@@ -1,7 +1,6 @@
 package com.peterzuo.fundamentals;
 
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public abstract class Tree<T> {
     public enum TraverseOrder{

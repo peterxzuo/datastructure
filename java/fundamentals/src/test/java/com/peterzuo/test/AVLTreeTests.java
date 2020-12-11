@@ -2,11 +2,12 @@ package com.peterzuo.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import com.peterzuo.fundamentals.AVLTree;
 import com.peterzuo.fundamentals.Tree;
-import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import org.junit.jupiter.api.Test;
 
 public class AVLTreeTests {
 
