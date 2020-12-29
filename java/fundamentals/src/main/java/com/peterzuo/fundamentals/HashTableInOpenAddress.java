@@ -1,11 +1,10 @@
 package com.peterzuo.fundamentals;
 
 import java.security.InvalidKeyException;
-import java.security.KeyException;
 
 import javax.management.openmbean.KeyAlreadyExistsException;
 
-public class HashTableInOpenAddress<T extends Comparable> implements HashTable<T>{
+public class HashTableInOpenAddress<T extends Comparable, V> implements HashTable<T, V>{
     enum HashEntryFlag{
         DeleteMe,
         Empty,
@@ -44,7 +43,7 @@ public class HashTableInOpenAddress<T extends Comparable> implements HashTable<T
     }
 
     @Override
-    public void insert(T key, Object value) {
+    public void insert(T key, V value) {
         if (key == null)
             throw new NullPointerException();
 
@@ -72,7 +71,7 @@ public class HashTableInOpenAddress<T extends Comparable> implements HashTable<T
     }
 
     @Override
-    public Object delete(T key) throws InvalidKeyException {
+    public V delete(T key) throws InvalidKeyException {
         if (key == null)
             throw new NullPointerException();
 
@@ -87,7 +86,7 @@ public class HashTableInOpenAddress<T extends Comparable> implements HashTable<T
                 this.array[hash].flag = HashEntryFlag.DeleteMe;
                 this.tableSize--;
 
-                return this.array[hash].value;
+                return (V)this.array[hash].value;
             }
 
             pos++;
@@ -112,7 +111,7 @@ public class HashTableInOpenAddress<T extends Comparable> implements HashTable<T
     }
 
     @Override
-    public Object getValue(T key) {
+    public V getValue(T key) {
         int pos = 1;
         while(true){
             int hash = hash(key, pos);
@@ -121,7 +120,7 @@ public class HashTableInOpenAddress<T extends Comparable> implements HashTable<T
             }
 
             if (this.array[hash].flag == HashEntryFlag.Filled && this.array[hash].key == key){
-                return this.array[hash].value;
+                return (V)this.array[hash].value;
             }
 
             pos++;

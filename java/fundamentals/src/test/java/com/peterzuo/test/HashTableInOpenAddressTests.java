@@ -17,7 +17,7 @@ public class HashTableInOpenAddressTests {
 
     @Test
     public void insert_test() {
-        HashTableInOpenAddress<String> hashTable = new HashTableInOpenAddress<String>(1024);
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(1024);
 
         hashTable.insert("a", 1);
 
@@ -27,7 +27,7 @@ public class HashTableInOpenAddressTests {
 
     @Test
     public void insertNull_test() {
-        HashTableInOpenAddress<String> hashTable = new HashTableInOpenAddress<String>(1024);
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(1024);
 
         assertThrows(NullPointerException.class, () -> {
             hashTable.insert(null, 1);
@@ -36,7 +36,7 @@ public class HashTableInOpenAddressTests {
 
     @Test
     public void insertDuplicateKey_test() {
-        HashTableInOpenAddress<String> hashTable = new HashTableInOpenAddress<String>(1024);
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(1024);
 
         hashTable.insert("a", 1);
         assertThrows(KeyAlreadyExistsException.class, () -> {
@@ -46,7 +46,7 @@ public class HashTableInOpenAddressTests {
 
     @Test
     public void insertMore_test() {
-        HashTableInOpenAddress<String> hashTable = new HashTableInOpenAddress<String>(1024);
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(1024);
 
         hashTable.insert("a", 1);
         hashTable.insert("b", 1);
@@ -61,7 +61,7 @@ public class HashTableInOpenAddressTests {
 
     @Test
     public void delete_test() throws InvalidKeyException {
-        HashTableInOpenAddress<String> hashTable = new HashTableInOpenAddress<String>(1024);
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(1024);
 
         hashTable.insert("a", 1);
         int value = (int)hashTable.delete("a");
@@ -72,7 +72,7 @@ public class HashTableInOpenAddressTests {
 
     @Test
     public void deleteNull_test(){
-        HashTableInOpenAddress<String> hashTable = new HashTableInOpenAddress<String>(1024);
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(1024);
 
         hashTable.insert("a", 1);
         assertThrows(NullPointerException.class, ()->{
@@ -82,7 +82,7 @@ public class HashTableInOpenAddressTests {
 
     @Test
     public void deleteNonExistKey_test(){
-        HashTableInOpenAddress<String> hashTable = new HashTableInOpenAddress<String>(1024);
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(1024);
 
         assertThrows(InvalidKeyException.class, ()->{
             hashTable.delete("a");
