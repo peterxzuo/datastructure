@@ -89,4 +89,38 @@ public class HashTableInOpenAddressTests {
         });
     }
 
+    @Test
+    public void insertionRehash_test(){
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(8);
+        for (int i=0; i<10; i++){
+            hashTable.insert(String.valueOf(i), i);
+        }
+
+        for (int i=0; i<10; i++){
+            assertTrue(hashTable.exists(String.valueOf(i)));
+        }
+
+    }
+
+    @Test
+    public void deletionRehash_test() throws InvalidKeyException {
+        HashTableInOpenAddress<String, Integer> hashTable = new HashTableInOpenAddress<String, Integer>(8);
+        for (int i=0; i<10; i++){
+            hashTable.insert(String.valueOf(i), i);
+        }
+
+        for (int i=0; i<8; i++){
+            hashTable.delete(String.valueOf(i));
+        }
+
+        for (int i=0; i<8; i++){
+            assertFalse(hashTable.exists(String.valueOf(i)));
+        }
+
+        for (int i=8; i<10; i++){
+            assertTrue(hashTable.exists(String.valueOf(i)));
+        }
+
+    }
+
 }

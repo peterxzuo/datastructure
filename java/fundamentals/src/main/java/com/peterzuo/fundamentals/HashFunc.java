@@ -20,8 +20,9 @@ public class HashFunc {
     int generateRandomCoefficient(){
         while(true){
             int coeff = (int) Math.floor((double)this.prime * Math.random());
-            if (coeff > 10){
-                return coeff;
+            int prime = Primes.nextPrime(coeff);
+            if (prime > 10 && prime < this.prime){
+                return prime;
             }
         }
     }
